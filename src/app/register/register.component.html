@@ -1,0 +1,38 @@
+
+   
+  <form (ngSubmit)="submit_form_data()" #form1="ngForm" class="modal-content">
+      <div class="container">
+          <h1>Sign Up</h1>
+          <p>Please fill in this form to create an account.</p>
+          <br>
+        
+    <label>User Name</label><br>
+    <input type="text" [(ngModel)]="user_name" name="user_name" #user_name2="ngModel" minlength="3" required placeholder="Enter User Name">
+    <span *ngIf="user_name2.invalid && (user_name2.dirty || user_name2.touched)" class="red-text">
+      <span *ngIf="user_name2.errors.required"> User Name should not be empty.</span>
+      <span *ngIf="user_name2.errors.minlength"> User Name must be at least 3 characters long.</span>
+    </span><br><br>
+
+    <label>Email Id</label><br>
+    <input type="text" [(ngModel)]="email_id" name="email_id" #email_id2="ngModel" required placeholder="Enter Email Id" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$">
+    <span *ngIf="email_id2.invalid && (email_id2.dirty || email_id2.touched)" class="red-text">
+      <span *ngIf="email_id2.errors.required"> Email Id should not be empty.</span>
+      <span *ngIf="email_id2.errors.pattern"> This is not a valid Email Id!</span>
+    </span><br><br>
+
+    <label>Password</label><br>
+    <input type="password" [(ngModel)]="pass_word" name="pass_word" #pass_word2="ngModel" required placeholder="Enter Password">
+    <span *ngIf="pass_word2.invalid && (pass_word2.dirty || pass_word2.touched)" class="red-text">
+      <span *ngIf="pass_word2.errors.required"> Password should not be empty.</span>
+    </span><br><br>
+
+    <div class="clearfix">
+    <button [disabled]="!form1.form.valid"  class="signupbtn">Sign Up</button>
+    <button  class="cancelbtn" routerLink="/homepage" routerLinkActive="active" >Cancel</button>
+    </div>
+  
+  <div>
+    <br><p class="red-text">{{message}}</p>
+  </div>
+</div>
+</form>
